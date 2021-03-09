@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculatrice</title>
+</head>
+<body>
+    <div class="screen" id="screen"></div>
+        <div class="container">
+           <div class="box">
+               <button class="button" value="0">0</button>
+               <button class="button" value="1">1</button>
+               <button class="button" value="2">2</button>
+               <button class="button" value="3">3</button>
+               <button class="button" value="4">4</button>
+               <button class="button" value="5">5</button>
+               <button class="button" value="6">6</button>
+               <button class="button" value="7">7</button>
+               <button class="button" value="8">8</button>
+               <button class="button" value="9">9</button>
+               <button class="button" value="+">+</button>
+               <button class="button" value="-">-</button>
+               <button class="button" value="/">/</button>
+               <button class="button" value="*">*</button>
+               <button class="button" value="%">%</button>
+               <button class="button" id="egal">=</button>
+               <button class="button" value="refresh" id="refresh">CE</button>
+               <button class="button" value="delete" id="sup">←</button>
+           </div>
+        </div>
+    <script>
+        let screen = document.getElementById("screen");
+
+        function postElements()
+        {
+            screen.textContent += this.value;
+        }
+
+        function result()
+        {
+            screen.textContent = eval(screen.textContent);
+        }
+
+        function refresh()
+        {
+            screen.textContent = "0";
+        }
+
+        function sup()
+        {
+            screen.textContent = "";
+        }
+
+        let button = document.getElementsByClassName("button");
+        let egal = document.getElementById("egal");
+        let CE = document.getElementById("refresh");
+        let deleter = document.getElementById("sup");
+        
+        for (let i=0; i<button.length; i++){
+            button[i].addEventListener("click", postElements);
+        }
+
+        egal.addEventListener("click",result);
+        CE.addEventListener("click", refresh);
+        deleter.addEventListener("click", sup);
+
+
+
+    </script>
+</body>
+</html>
